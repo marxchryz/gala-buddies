@@ -28,12 +28,31 @@
         height: 400px;
       }
     </style>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../style.css" />
   </head>
-  <body>
+  <body class="container my-5">
+    <div id="container03" class="container default full">
+      <div class="wrapper">
+        <div class="inner">
+          <h3 id="text11" class="style5">Lobortis scelerisque</h3>
+          <h2 id="text04" class="style1">Pricing X</h2>
+          <p id="text27" class="style4">
+            Urna nec tincidunt praesent semper feugiat nibh sed pulvinar.
+            Scelerisque felis imperdiet proin fermentum leo vel orci porta non.
+            Sit amet justo donec enim.
+          </p>
+        </div>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-md-5 col-lg-5">
-        Lorem quia repellat nobis minima dicta Architecto repellat dolorum eius porro voluptatum, officia quos. Quos magni fuga aperiam veritatis esse Quae nostrum dolores reprehenderit exercitationem dolores. Laboriosam eveniet quis sed
+      <div class="col-md-5 col-lg-5 mb-3">
+        <div id="" class="container" style="padding: 0 !important">
+          <iframe
+            src="../map.html"
+            frameborder="0"
+            style="height: 70vh !important; width: 100%; margin: 0"
+          ></iframe>
+        </div>
       </div>
       <div class="col-md-7 col-lg-7">
         <div id="gallery"></div>
@@ -49,7 +68,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
   $(document).ready(function () {
-    let coords = { lat: '14.5530', long: '120.9806' }
+    let coords = { lat: '14.5530', long: '120.9806' };
     const BASE_DIR = '../images/5-22-2022/';
     let images = [
       'IMG_20220522_102818_00_001.jpg',
@@ -71,7 +90,7 @@
         .last()
         .append(
           $(
-            '<div class="col-lg-6 col-md-6 mb-3"><div class="viewer" id="viewer-' +
+            '<div class="col-lg-6 col-md-6 mb-3 col-6"><div class="viewer" id="viewer-' +
               i +
               '"></div></div>'
           )
@@ -88,4 +107,15 @@
       });
     }
   });
+</script>
+<script>
+  window.addEventListener(
+    'message',
+    (e) => {
+      if (e.data.action === 'redirect') {
+        location.href = '../' + e.data.data;
+      }
+    },
+    false
+  );
 </script>
