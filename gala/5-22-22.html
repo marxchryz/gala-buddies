@@ -28,9 +28,17 @@
         height: 400px;
       }
     </style>
+    <link rel="stylesheet" href="../style.css">
   </head>
   <body>
-    <div id="gallery"></div>
+    <div class="row">
+      <div class="col-md-5 col-lg-5">
+        Lorem quia repellat nobis minima dicta Architecto repellat dolorum eius porro voluptatum, officia quos. Quos magni fuga aperiam veritatis esse Quae nostrum dolores reprehenderit exercitationem dolores. Laboriosam eveniet quis sed
+      </div>
+      <div class="col-md-7 col-lg-7">
+        <div id="gallery"></div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -41,7 +49,8 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 <script>
   $(document).ready(function () {
-    const BASE_DIR = './images/5-22-2022/';
+    let coords = { lat: '14.5530', long: '120.9806' }
+    const BASE_DIR = '../images/5-22-2022/';
     let images = [
       'IMG_20220522_102818_00_001.jpg',
       'IMG_20220522_122335_00_006.jpg',
@@ -53,7 +62,7 @@
 
     for (let i = 0; i < images.length; i++) {
       let row;
-      if (i % 3 === 0) {
+      if (i % 2 === 0) {
         $('#gallery').append($('<div class="row"></div>'));
       }
 
@@ -62,7 +71,7 @@
         .last()
         .append(
           $(
-            '<div class="col-lg-4 col-md-4 mb-3"><div class="viewer" id="viewer-' +
+            '<div class="col-lg-6 col-md-6 mb-3"><div class="viewer" id="viewer-' +
               i +
               '"></div></div>'
           )

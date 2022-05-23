@@ -2,17 +2,6 @@
 <!-- saved from url=(0039)https://5d0cdfee3617ddcb.demo.carrd.co/ -->
 <html lang="en" nighteye="active" style="background-image: none !important">
   <head>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
-      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-      crossorigin=""
-    ></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Landing X</title>
     <meta
@@ -90,8 +79,12 @@
             </div>
           </div>
           <div id="container29" class="container columns">
-            <div class="wrapper">
-              <div id="map"></div>
+            <div class="wrapper" style="padding: 0 !impotant">
+              <iframe
+                src="./map.html"
+                frameborder="0"
+                style="height: 500px !important; width: 100%; margin: 0"
+              ></iframe>
             </div>
           </div>
           <div id="container04" class="container default full screen">
@@ -107,30 +100,13 @@
   </body>
 </html>
 <script>
-  let places = [
-    { coords: { lat: '14.5329', long: '120.9828' }, description: 'IKEA' },
-    {
-      coords: { lat: '14.7342', long: '121.0591' },
-      description: 'SM Fairview',
+  window.addEventListener(
+    'message',
+    (e) => {
+      if(e.data.action === 'redirect') {
+        location.href = e.data.data
+      }
     },
-    {
-      coords: { lat: '14.5530', long: '120.9806' },
-      description: 'Spiral Buffet',
-    },
-  ];
-  var map = L.map('map').setView([14.6437624, 121.0372786], 11);
-  tilelayer = L.tileLayer(
-    'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=RcIAgUmGGblTLo8RazKT',
-    {
-      maxZoom: 20,
-      openLegendOnLoad: true,
-    }
-  ).addTo(map);
-
-  for (let i = 0; i < places.length; i++) {
-    L.marker([places[i].coords.lat, places[i].coords.long])
-      .addTo(map)
-      .bindPopup(places[i].description)
-      .openPopup();
-  }
+    false
+  );
 </script>
